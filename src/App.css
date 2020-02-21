@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.canvasbox {
+  border: solid 3px pink;
+  border-radius: 8px;
+}
