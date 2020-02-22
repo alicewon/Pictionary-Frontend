@@ -1,9 +1,28 @@
 import React from 'react'
 import ReactDOM from "react-dom"
 import CanvasDraw from "react-canvas-draw"
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 ReactDOM.render(<CanvasDraw />, document.getElementById("root"));
 
+
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//     '& > *': {
+//       margin: theme.spacing(1),
+//     },
+//   },
+// }))
+
+
 class DrawingArea extends React.Component {
+  // classes = useStyles();
+
   state = {
     color: "#ffc600",
     width: 400,
@@ -12,6 +31,8 @@ class DrawingArea extends React.Component {
     lazyRadius: 12
   }
 
+
+  
   componentDidMount() {
     window.setInterval(() => {
       this.setState({
@@ -22,9 +43,10 @@ class DrawingArea extends React.Component {
 
   
   render = () => {
+    
     return(
       <div>
-      <h1>This is the Drawing Area</h1>
+      <h1>Draw Something:</h1>
      
       <CanvasDraw
         className="canvasbox"
@@ -36,8 +58,9 @@ class DrawingArea extends React.Component {
         canvasWidth={this.state.width}
         canvasHeight={this.state.height}
       />
-       <div >
-        <button
+       <Container maxWidth="sm">
+         <ButtonGroup color="primary" aria-label="outlined primary button group">
+        <Button
           onClick={() => {
             localStorage.setItem(
               "savedDrawing",
@@ -46,32 +69,25 @@ class DrawingArea extends React.Component {
           }}
         >
           Save
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             this.saveableCanvas.clear();
           }}
         >
           Clear
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => {
             this.saveableCanvas.undo();
           }}
         >
           Undo
-        </button>
-      </div>
-      <h2>Saved Drawing:</h2>
-      <button
-        onClick={() => {
-          this.loadableCanvas.loadSaveData(
-            localStorage.getItem("savedDrawing")
-          );
-        }}
-      >
-        Playback Drawing
-      </button>
+        </Button>
+        </ButtonGroup>
+        </Container>
+      <h2>Watch Your Drawing:</h2>
+      
       <CanvasDraw
         className="canvasbox"
         disabled
@@ -79,6 +95,37 @@ class DrawingArea extends React.Component {
         ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
         saveData={localStorage.getItem("savedDrawing")}
       />
+
+
+        <Container maxWidth="sm">
+         <ButtonGroup color="primary" aria-label="outlined primary button group">
+        
+        
+        <Button
+          onClick={() => {
+            this.loadableCanvas.loadSaveData(
+              localStorage.getItem("savedDrawing")
+            );
+          }}
+        >
+          Playback Drawing
+        </Button>
+
+
+        <Button
+          onClick={() => {
+            this.loadableCanvas.clear();
+          }}
+        >
+          Clear
+        </Button>
+        
+        </ButtonGroup>
+        </Container>
+
+
+
+
     </div>
     )
   }

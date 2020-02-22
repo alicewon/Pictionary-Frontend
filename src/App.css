@@ -40,4 +40,13 @@
 .canvasbox {
   border: solid 3px pink;
   border-radius: 8px;
+  width: 666px!important;
+}
+
+
+.MuiContainer-root.MuiContainer-maxWidthSm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
