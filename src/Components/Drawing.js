@@ -4,7 +4,10 @@ import { API_WS_ROOT} from '../constants/index'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Navbar from './Navbar';
 const actioncable = require("actioncable")
+
+
 
 class Drawing extends React.Component {
   state = {
@@ -41,6 +44,7 @@ class Drawing extends React.Component {
 
       <React.Fragment>
         <CssBaseline />
+        <Navbar/>
           <Container maxWidth="sm">
           {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
             <DrawingArea/>

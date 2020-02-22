@@ -46,7 +46,7 @@ class DrawingArea extends React.Component {
     
     return(
       <div>
-      <h1>Draw Something:</h1>
+      <h1>DRAW SOMETHING:</h1>
      
       <CanvasDraw
         className="canvasbox"
@@ -86,7 +86,7 @@ class DrawingArea extends React.Component {
         </Button>
         </ButtonGroup>
         </Container>
-      <h2>Watch Your Drawing:</h2>
+      <h2>watch your drawing:</h2>
       
       <CanvasDraw
         className="canvasbox"

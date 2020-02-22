@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+
+body {
+  background-color:#f1f1f1!important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -38,7 +43,7 @@
 }
 
 .canvasbox {
-  border: solid 3px pink;
+  border: solid 3px #FE6B8A;
   border-radius: 8px;
   width: 666px!important;
 }
@@ -49,4 +54,32 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.MuiButton-outlinedPrimary {
+  /* background: linear-gradient(red, orange); */
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)
+  
+}
+
+.MuiButton-outlinedPrimary {
+  color: #233fd8!important;
+}
+
+
+
+h1 {
+  /* color: #ff1744; */
+  color: #a25b9e;
+  letter-spacing: 10px;
+}
+
+h2 {
+  color: #a25b9e;
+
+}
+
+.nav-holder {
+  background-color: #fff;
+  text-align: center;
 }
