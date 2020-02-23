@@ -24,7 +24,7 @@ class DrawingArea extends React.Component {
   // classes = useStyles();
 
   state = {
-    color: "#ffc600",
+    color: "#000",
     width: 400,
     height: 400,
     brushRadius: 10,
@@ -33,13 +33,13 @@ class DrawingArea extends React.Component {
 
 
   
-  componentDidMount() {
-    window.setInterval(() => {
-      this.setState({
-        color: "#" + Math.floor(Math.random() * 16777215).toString(16)
-      });
-    }, 2000);
-    }
+  // componentDidMount() {
+  //   window.setInterval(() => {
+  //   //   this.setState({
+  //   //     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+  //   //   });
+  //   // }, 2000);
+  //   }
 
   
   render = () => {

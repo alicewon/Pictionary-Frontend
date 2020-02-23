@@ -2,7 +2,6 @@ import React from 'react'
 import DrawingArea from './DrawingArea'
 import { API_WS_ROOT} from '../constants/index'
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Navbar from './Navbar';
 const actioncable = require("actioncable")
@@ -46,7 +45,7 @@ class Drawing extends React.Component {
         <CssBaseline />
         <Navbar/>
           <Container maxWidth="sm">
-          {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
+      
             <DrawingArea/>
             <div className="newDrawingForm">
               <form onSubmit={this.handleSubmit}>
