@@ -1,6 +1,5 @@
 import React from 'react'
 import DrawingArea from './DrawingArea'
-import { API_WS_ROOT} from '../constants/index'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Navbar from './Navbar';
@@ -13,22 +12,22 @@ class Drawing extends React.Component {
     text: ''
   }
   
-  componentDidMount() {
-    this.cable = actioncable.createConsumer(API_WS_ROOT)
-    // this.draw()
+  // componentDidMount() {
+  //   //this.cable = actioncable.createConsumer('ws://localhost:3000/cable')
+  //   // this.draw()
 
-    this.canvasChannel = this.cable.subscriptions.create({
-      channel: `DrawingsChannel`
-      // id: this.props.paramsId
-  },{
-      connected: () => {
-          console.log("Drawing.js has connected!")
-      },
-      disconnected: () => this.toggleConnection(),
-      received: data => {console.log(data)}
+  //   this.canvasChannel = this.cable.subscriptions.create({
+  //     channel: `DrawingsChannel`
+  //     // id: this.props.paramsId
+  // },{
+  //     connected: () => {
+  //         console.log("Drawing.js has connected!")
+  //     },
+  //     disconnected: () => this.toggleConnection(),
+  //     received: data => {console.log(data)}
  
-  })
-  }
+  // })
+  // }
 
   handleChange = e => {
     this.setState({ text: e.target.value })

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Drawing from './Components/Drawing.js'
 import './App.css';
 
@@ -15,6 +15,8 @@ class App extends React.Component {
       }
     }
   }
+
+  
 
   render() {
     return(
