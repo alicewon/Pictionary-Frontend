@@ -1,16 +1,13 @@
 import React from 'react'
-import DrawingArea from './DrawingArea'
+import DrawingPad from './DrawingPad'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import Navbar from './Navbar';
-const actioncable = require("actioncable")
+// const actioncable = require("actioncable")
 
 
 
-class Drawing extends React.Component {
-  state = {
-    text: ''
-  }
+class DrawingContainer extends React.Component {
+ 
   
   // componentDidMount() {
   //   //this.cable = actioncable.createConsumer('ws://localhost:3000/cable')
@@ -29,24 +26,17 @@ class Drawing extends React.Component {
   // })
   // }
 
-  handleChange = e => {
-    this.setState({ text: e.target.value })
-  }
-
-  // handleSubmit = e => {
-
-  // }
 
   render = () => {
     return(
 
       <React.Fragment>
         <CssBaseline />
-        <Navbar/>
+      
           <Container maxWidth="sm">
       
-            <DrawingArea/>
-            <div className="newDrawingForm">
+            <DrawingPad/>
+            {/* <div className="newDrawingForm">
               <form onSubmit={this.handleSubmit}>
                 <label>Type Something</label>
                 <br/>
@@ -57,11 +47,11 @@ class Drawing extends React.Component {
                 />
                 <input type="submit"/>
               </form>
-            </div>
+            </div> */}
           </Container>
       </React.Fragment>
     )
   }
 }
 
-export default Drawing
+export default DrawingContainer

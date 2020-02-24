@@ -8,23 +8,21 @@ import actioncable from 'actioncable'
 
 const CableApp = {}
 
-//CableApp.cable= actionCable.createConsumer('ws://localhost:3000/cable')
-
-
-
+  //CableApp.cable= actionCable.createConsumer('ws://localhost:3000/cable')
   //this.cable = actioncable.createConsumer('ws://localhost:3000/cable')
   // this.draw() API_WS_ROOT ws://localhost:3000/cable
   CableApp.cable = actioncable.createConsumer('ws://localhost:3000/cable')
 
   CableApp.drawingChannel = CableApp.cable.subscriptions.create({
     channel: `DrawingsChannel`
+    
     // id: this.props.paramsId
 },{
     connected: () => {
         console.log("Index.js has connected!")
-    },
-    disconnected: () => this.toggleConnection(),
-    received: data => {console.log(data)}
+    }
+    // disconnected: () => this.toggleConnection(),
+    // received: data => {console.log(data)}
 
 })
 

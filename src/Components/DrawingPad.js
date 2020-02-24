@@ -3,25 +3,33 @@ import ReactDOM from "react-dom"
 import CanvasDraw from "react-canvas-draw"
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 ReactDOM.render(<CanvasDraw />, document.getElementById("root"));
 
+//Monday To Do List:
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//     '& > *': {
-//       margin: theme.spacing(1),
-//     },
-//   },
-// }))
+// function that sends/streams(?) message to drawings_channel from this component:
+
+// use onChange in CanvasDraw component to get the localstorage saved data of the drawing on each mouseUp
+// --> onChange={() => saved_drawing = this.saveableCanvas.getSaveData()}
+
+// within same onChange, take localstorage's data and pass it as the message being sent to be streamed in the drawings_channel
+// --> (onChange gives new version of the drawing with updated mouse clicks ) 
+// -->  onChange={() => saved_drawing = this.saveableCanvas.getSaveData() 
+//        sendToChannel(saved_drawing)
+//             
 
 
-class DrawingArea extends React.Component {
-  // classes = useStyles();
+//second user: 
+
+// create two user views? do i need auth for this? Can i just say, if 1 person is already connected to server, then they are considered player#2 and have the watch view? (not able to draw, and only receiving messages)
+
+//chat will stay true to real-time chat messages
+
+//will chat be in a different channel? needs to render on same page as drawing
+
+
+class DrawingPad extends React.Component {
 
   state = {
     color: "#000",
@@ -30,17 +38,6 @@ class DrawingArea extends React.Component {
     brushRadius: 10,
     lazyRadius: 12
   }
-
-
-  
-  // componentDidMount() {
-  //   window.setInterval(() => {
-  //   //   this.setState({
-  //   //     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
-  //   //   });
-  //   // }, 2000);
-  //   }
-
   
   render = () => {
     
@@ -57,11 +54,14 @@ class DrawingArea extends React.Component {
         lazyRadius={this.state.lazyRadius}
         canvasWidth={this.state.width}
         canvasHeight={this.state.height}
+        onChange={() => console.log(this.saveableCanvas.getSaveData())}
+      
       />
        <Container maxWidth="sm">
          <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button
           onClick={() => {
+            //saved_drawing = this.saveableCanvas.getSaveData()
             localStorage.setItem(
               "savedDrawing",
               this.saveableCanvas.getSaveData()
@@ -87,13 +87,17 @@ class DrawingArea extends React.Component {
         </ButtonGroup>
         </Container>
       <h2>watch your drawing:</h2>
+
       
+      {/* bottom canvas will alwasy be listening to drawings channel  */}
+      {/* need to replace local storage with call to server */}
       <CanvasDraw
         className="canvasbox"
         disabled
         hideGrid
         ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
         saveData={localStorage.getItem("savedDrawing")}
+        
       />
 
 
@@ -132,4 +136,4 @@ class DrawingArea extends React.Component {
 }
 
 
-export default DrawingArea
+export default DrawingPad
