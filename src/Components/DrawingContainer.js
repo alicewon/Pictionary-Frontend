@@ -8,7 +8,6 @@ import Container from '@material-ui/core/Container';
 
 class DrawingContainer extends React.Component {
  
-  
   // componentDidMount() {
   //   //this.cable = actioncable.createConsumer('ws://localhost:3000/cable')
   //   // this.draw()
@@ -26,7 +25,6 @@ class DrawingContainer extends React.Component {
   // })
   // }
 
-
   render = () => {
     return(
 
@@ -35,7 +33,11 @@ class DrawingContainer extends React.Component {
       
           <Container maxWidth="sm">
       
-            <DrawingPad/>
+            <DrawingPad 
+              CableApp={this.props.CableApp}
+              // drawData={this.props.drawData}
+              // drawHandler={this.props.drawHandler}
+            />
             {/* <div className="newDrawingForm">
               <form onSubmit={this.handleSubmit}>
                 <label>Type Something</label>

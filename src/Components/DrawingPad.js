@@ -38,9 +38,14 @@ class DrawingPad extends React.Component {
     brushRadius: 10,
     lazyRadius: 12
   }
+
+  
+
+
   
   render = () => {
-    
+    //let savedDrawData= this.saveableCanvas.getSaveData()
+
     return(
       <div>
       <h1>DRAW SOMETHING:</h1>
@@ -54,9 +59,12 @@ class DrawingPad extends React.Component {
         lazyRadius={this.state.lazyRadius}
         canvasWidth={this.state.width}
         canvasHeight={this.state.height}
-        onChange={() => console.log(this.saveableCanvas.getSaveData())}
-      
+        // onChange={() => console.log(this.saveableCanvas.getSaveData())} //json
+        // // this will send the updated drawing save data, each time it is updated, to the web socket server.
+        // onChange={() => this.props.CableApp.drawingsChannel.send(this.saveableCanvas.getSaveData())}
+        onChange={() => this.props.CableApp.drawingsChannel.send({"drawing_data": this.saveableCanvas.getSaveData()})}
       />
+
        <Container maxWidth="sm">
          <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button
@@ -89,7 +97,7 @@ class DrawingPad extends React.Component {
       <h2>watch your drawing:</h2>
 
       
-      {/* bottom canvas will alwasy be listening to drawings channel  */}
+      {/* bottom canvas will always be listening to drawings channel  */}
       {/* need to replace local storage with call to server */}
       <CanvasDraw
         className="canvasbox"

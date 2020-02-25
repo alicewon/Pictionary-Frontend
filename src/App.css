@@ -71,12 +71,12 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-group
 h1 {
   /* color: #ff1744; */
   color: #a25b9e;
-  letter-spacing: 10px;
+  margin-top:80px;
+
 }
 
 h2 {
   color: #a25b9e;
-
 }
 
 .MuiAppBar-colorSecondary {
