@@ -1,6 +1,7 @@
 import React from 'react'
 import DrawingPad from './DrawingPad'
-import CssBaseline from '@material-ui/core/CssBaseline';
+import GameStatusBar from './GameStatusBar'
+//import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 // const actioncable = require("actioncable")
 
@@ -29,12 +30,16 @@ class DrawingContainer extends React.Component {
     return(
 
       <React.Fragment>
-        <CssBaseline />
+        <GameStatusBar
+              username={this.props.username}
+            />
+        {/* <CssBaseline /> */}
       
           <Container maxWidth="sm">
-      
+          
             <DrawingPad 
               CableApp={this.props.CableApp}
+              username={this.props.username}
               // drawData={this.props.drawData}
               // drawHandler={this.props.drawHandler}
             />

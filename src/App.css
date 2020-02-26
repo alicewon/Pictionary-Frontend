@@ -69,9 +69,11 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-group
 
 
 h1 {
-  /* color: #ff1744; */
   color: #a25b9e;
   margin-top:80px;
+  margin-bottom: 65px!important;
+  color: #ec4c4c;
+  color: #f6f9ff;
 
 }
 
@@ -80,12 +82,23 @@ h2 {
 }
 
 .MuiAppBar-colorSecondary {
-  background-color:#c7f8e9!important;
+  background-color:#fff!important;
 }
 
 .app-holder {
   background-color: #fff;
   text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 body {
@@ -113,4 +126,71 @@ h5 {
 .guest {
   background: #F0C987;
   color: white;
+}
+
+.ui.secondary.menu {
+  background: #282c34;
+  color: white;
+}
+
+
+.ui.secondary.menu .active.item {
+  background-color:transparent!important;
+  color: rgba(0,0,0,.95);
+  border-radius: 0!important;
+  border-bottom: solid 4px blue;
+}
+
+.ui.inverted.segment {
+  /* background: #c1cbd4!important; */
+background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%)!important;
+
+}
+
+.homepage-banner{
+  min-height: 400px!important;
+}
+
+.ui.segment.placeholder-images-group {
+  margin-top: 0px;
+  padding: 50px;
+
+}
+
+.ui.primary.button {
+  background-color: #0157ff!important;
+}
+.ui.primary.button:hover {
+  background-color: #0c49be!important;
+
+}
+
+.ui.primary.button {
+  font-size: 1.5rem;
+}
+
+.left.menu >a {
+  padding: 120px;
+  text-transform: uppercase;
+  color: #fff;
+  
+}
+
+.left.menu {
+  /* margin-top: 20px; */
+
+  background-color: #36403d;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* GameStatusBar */
+.ui.raised.segment.game-status-bar {
+  margin: 1rem 6rem;
+  background: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+  border: none;
+}
+
+h5 {
+  color: lightslategray;
 }

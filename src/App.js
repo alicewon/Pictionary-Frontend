@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from './Components/Navbar'
+import Homepage from './Components/Homepage'
 import DrawingContainer from './Components/DrawingContainer'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import './index.css';
 import actioncable from 'actioncable'
@@ -21,7 +23,7 @@ const CableApp = {}
     // received: data => {console.log(data)}
     
 
-    //state needs to be updated on receive at the Drawing Pad level
+    //state needs to be updated on receive at the Drawing Pad levelse
     received: (data) => {
       // this.setState(
       //   { drawData: data }
@@ -33,22 +35,16 @@ const CableApp = {}
 })
 
 
+
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
       currentUser: null,
-      drawData: {}
+      drawData: {},
+      username: 'alwaysNicole94'
     }
   }
-
-  drawHandler(drawData) {
-    this.setState({
-      drawData: drawData
-    })
-  }
-
-
 //move index.js cable stuff to app.js
 
 //create state for drawing string (parse later to get out of JSON string JSON.parse() before saving so that it's an obj for redrawing on other canvas)
@@ -64,13 +60,30 @@ class App extends React.Component {
     return(
 
     <div>
-      <Navbar/>
-      <DrawingContainer 
-        // cableApp={this.cableApp}
-        CableApp={CableApp}
-        drawData={this.state.drawData}
-        drawHandler={this.props.drawHandler}
-      />
+      <Router>
+        <Navbar/>
+
+        <Route
+            path="/"
+            exact
+            render={() => <Homepage 
+              username={this.state.username}
+            />}
+          />
+
+        <Route 
+          path="/game"
+          exact
+          render={ ()=> <DrawingContainer 
+            CableApp={CableApp}
+            drawData={this.state.drawData}
+            drawHandler={this.props.drawHandler}
+            username={this.state.username}
+        
+          />}
+        />
+        
+      </Router> 
     </div>
     )
   }

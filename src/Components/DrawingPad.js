@@ -48,7 +48,7 @@ class DrawingPad extends React.Component {
 
     return(
       <div>
-      <h1>DRAW SOMETHING:</h1>
+      <h2>DRAW SOMETHING:</h2>
      
       <CanvasDraw
         className="canvasbox"
