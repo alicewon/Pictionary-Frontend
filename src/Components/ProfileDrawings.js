@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Segment, Grid} from 'semantic-ui-react'
 
 class ProfileDrawings extends React.Component {

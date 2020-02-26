@@ -1,22 +1,12 @@
 import React from 'react';
-import DrawingContainer from './DrawingContainer.js'
-import ChatContainer from './ChatContainer.js'
-import CssBaseline from '@material-ui/core/CssBaseline';
 //import Container from '@material-ui/core/Container';
 // import Button from '@material-ui/core/Button';
 import {Link} from  'react-router-dom';
 import { Grid, Image } from 'semantic-ui-react'
 import {
   Button,
-  Container,
-  Divider,
-  Header,
-  Icon,
-  List,
-  Menu,
   Responsive,
   Segment,
-  Sidebar,
   Visibility,
 } from 'semantic-ui-react'
 

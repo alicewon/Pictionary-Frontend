@@ -1,6 +1,6 @@
 import React from 'react'
 import { Segment } from 'semantic-ui-react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid} from 'semantic-ui-react'
 
 class GameStatusBar extends React.Component {
   render() {
@@ -24,7 +24,7 @@ class GameStatusBar extends React.Component {
                 <h3>0:42</h3>
               </Grid.Column>
               <Grid.Column>
-              <h5>Oponent:</h5>
+              <h5>Opponent:</h5>
                 <h3>bananacat</h3>
               </Grid.Column>
             </Grid.Row>

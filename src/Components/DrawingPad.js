@@ -36,8 +36,10 @@ class DrawingPad extends React.Component {
     color: "#000",
     width: 400,
     height: 400,
-    brushRadius: 10,
-    lazyRadius: 12
+    brushRadius: 5,
+    lazyRadius: 6,
+    immediateLoading:true,
+    loadTimeOffset: 0
   }
 
   
@@ -61,9 +63,31 @@ class DrawingPad extends React.Component {
         //   { drawData: data }
         // )
         // console.log("new drawing stuff")
-        // console.log(data)
+        console.log(data.drawing_data)
+
+
+  // //json parse first and save as variable: 
+  //  let potato =JSON.parse(data.drawing_data)
+
+  // //get out "lines" from potato
+  // let points = potato.lines.slice(-1)
+
+  // //rebuild drawingdata
+  // let newPotato = {...potato, lines: points}
+
+
+
+        //let brushstroke = JSON.parse(data.drawing_data).lines.slice(-1)
+        //console.log(lines.slice(-1)[0])
+        // (JSON.parse(data.drawing_data).lines.pop())
+        //console.log(JSON.stringify(newPotato))
         this.loadableCanvas.loadSaveData(
-          data.drawing_data
+      
+          // JSON.stringify(newPotato)
+
+         //JSON.stringify({lines: brushstroke})
+         data.drawing_data
+          // JSON.stringify(JSON.parse(data.drawing_data).lines.pop())
         );
         //a callback function that is called once everytime the server sends realtime data to Consumer
       },
@@ -82,6 +106,9 @@ class DrawingPad extends React.Component {
         lazyRadius={this.state.lazyRadius}
         canvasWidth={this.state.width}
         canvasHeight={this.state.height}
+        immediateLoading={this.state.immediateLoading}
+        loadTimeOffset={this.state.loadTimeOffset}
+
         // onChange={() => console.log(this.saveableCanvas.getSaveData())} //json
         // // this will send the updated drawing save data, each time it is updated, to the web socket server.
         // onChange={() => this.props.CableApp.drawingsChannel.send(this.saveableCanvas.getSaveData())}
@@ -128,6 +155,8 @@ class DrawingPad extends React.Component {
         hideGrid
         ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
         saveData={localStorage.getItem("savedDrawing")}
+        immediateLoading={this.state.immediateLoading}
+        loadTimeOffset={this.state.loadTimeOffset}
         
       />
 

@@ -1,15 +1,15 @@
-import React, { Component }from 'react'
+import React from 'react'
 // import ReactDOM from "react-dom"
 import logo from '../images/logo.png'
 import AppBar from '@material-ui/core/AppBar'
-import { Grid, Image } from 'semantic-ui-react'
+
 
 // Material-UI Imports:
 //import AppBar from '@material-ui/core/AppBar'
 
 // Semantic-UI Imports:
-import { Input, Menu } from 'semantic-ui-react'
-import { NavLink, withRouter } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react'
+import { NavLink} from 'react-router-dom'
 
 
 class Navbar extends React.Component {

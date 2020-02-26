@@ -79,6 +79,7 @@ h1 {
 
 h2 {
   color: #a25b9e;
+  text-align: center;
 }
 
 .MuiAppBar-colorSecondary {
@@ -206,4 +207,18 @@ h5 {
 
 .ui.header>.image:not(.icon), .ui.header>img {
   width: 7.5em!important;
+}
+
+/* media queries */
+@media only screen and (max-width: 900px) {
+  .left.menu >a {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .ui.very.padded.segment.profile-header-section,
+  .ui.very.padded.segment.profile-drawings-section
+  {
+    margin: 1rem 2rem;
+  }
 }

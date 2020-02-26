@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Header, Image, Segment, Grid, Button } from 'semantic-ui-react'
 import {Link} from  'react-router-dom';
 
