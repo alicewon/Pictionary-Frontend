@@ -46,7 +46,7 @@ class App extends React.Component {
       username: 'alwaysNicole94'
     }
   }
-//move index.js cable stuff to app.js
+//move index.js cable stuff to app.js, move to DrawingPad Component
 
 //create state for drawing string (parse later to get out of JSON string JSON.parse() before saving so that it's an obj for redrawing on other canvas)
 

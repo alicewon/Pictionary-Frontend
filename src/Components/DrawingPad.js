@@ -42,6 +42,7 @@ class DrawingPad extends React.Component {
 
   
   render = () => {
+
     //let savedDrawData= this.saveableCanvas.getSaveData()
 
     this.props.CableApp.drawingsChannel = this.props.CableApp.cable.subscriptions.create({
