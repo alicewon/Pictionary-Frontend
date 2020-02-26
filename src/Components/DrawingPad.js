@@ -29,6 +29,7 @@ ReactDOM.render(<CanvasDraw />, document.getElementById("root"));
 //will chat be in a different channel? needs to render on same page as drawing
 
 
+
 class DrawingPad extends React.Component {
 
   state = {
@@ -40,11 +41,32 @@ class DrawingPad extends React.Component {
   }
 
   
-
-
-  
   render = () => {
     //let savedDrawData= this.saveableCanvas.getSaveData()
+
+    this.props.CableApp.drawingsChannel = this.props.CableApp.cable.subscriptions.create({
+      channel: `DrawingsChannel`
+  },{
+      connected: () => {
+          console.log("Index.js has connected!")
+      },
+      // disconnected: () => this.toggleConnection(),
+      // received: data => {console.log(data)}
+      
+
+      //state needs to be updated on receive at the Drawing Pad levelse
+      received: (data) => {
+        // this.setState(
+        //   { drawData: data }
+        // )
+        // console.log("new drawing stuff")
+        // console.log(data)
+        this.loadableCanvas.loadSaveData(
+          data.drawing_data
+        );
+        //a callback function that is called once everytime the server sends realtime data to Consumer
+      },
+  })
 
     return(
       <div>

@@ -188,9 +188,22 @@ background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49
 .ui.raised.segment.game-status-bar {
   margin: 1rem 6rem;
   background: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+  /* background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%); */
   border: none;
 }
 
 h5 {
-  color: lightslategray;
+  /* color: lightslategray; */
+  color: #2132ae;
+}
+
+/* profile page */
+.ui.very.padded.segment.profile-header-section,
+.ui.very.padded.segment.profile-drawings-section
+ {
+  margin: 1rem 6rem;
+}
+
+.ui.header>.image:not(.icon), .ui.header>img {
+  width: 7.5em!important;
 }
