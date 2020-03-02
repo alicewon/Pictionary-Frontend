@@ -1,6 +1,7 @@
 import React from 'react'
 import DrawingPad from './DrawingPad'
 import GameStatusBar from './GameStatusBar'
+import ChatWindow from './ChatWindow'
 //import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 // const actioncable = require("actioncable")
@@ -55,6 +56,8 @@ class DrawingContainer extends React.Component {
                 <input type="submit"/>
               </form>
             </div> */}
+
+            <ChatWindow />
           </Container>
       </React.Fragment>
     )

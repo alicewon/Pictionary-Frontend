@@ -17,6 +17,7 @@ class Signup extends Component {
     e.preventDefault()
     this.props.postPlayer(this.state)
     this.setState(INITAL_STATE)
+    
   }
 
   render() {
@@ -38,10 +39,16 @@ class Signup extends Component {
                   placeholder='Username' 
                 />
               </Form.Field>
-              {/* <Form.Field>
+              <Form.Field>
                 <label>Password</label>
-                <input placeholder='Password' />
-              </Form.Field> */}
+                <input 
+                  type="password" 
+                  name="password" 
+                  placeholder='Password' 
+                  value={this.state.password} 
+                  onChange={this.handleChange} 
+                />
+              </Form.Field>
               
               <Button secondary type='submit'>Signup</Button>
             </Form>

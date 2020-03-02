@@ -75,9 +75,15 @@ postPlayer = (player) => {
     body: JSON.stringify(player)
 
   }).then(res => res.json())
-  .then(this.setState({ newSignUp: true }))
-  
-  
+  .then(data => {
+    if (data.error) {
+      alert(data.error)
+    }
+    else {
+    alert(data.success)
+    this.setState({ newSignUp: true })
+    }
+  })
 }
 
   render() {
