@@ -40,12 +40,12 @@ class Navbar extends React.Component {
                   onClick={this.handleItemClick}
                 />
                 
-                <Menu.Item
+                {/* <Menu.Item
                 as={NavLink} to="/game"
                 name='Draw'
                 active={activeItem === 'drawing'}
                 onClick={this.handleItemClick}
-                />
+                /> */}
 
                 <Menu.Item
                   as={NavLink} to="/profile"
@@ -53,6 +53,29 @@ class Navbar extends React.Component {
                   active={activeItem === 'profile'}
                   onClick={this.handleItemClick}
                 />
+
+                <Menu.Item
+                  as={NavLink} to="/login"
+                  name='Login'
+                  active={activeItem === 'login'}
+                  onClick={this.handleItemClick}
+                />  
+
+                <Menu.Item
+                  as={NavLink} to="/signup"
+                  name='Signup'
+                  active={activeItem === 'signup'}
+                  onClick={this.handleItemClick}
+                />   
+
+                <Menu.Item
+                  as={NavLink} to="/logout"
+                  name='Logout'
+                  active={activeItem === 'signup'}
+                  onClick={this.handleItemClick}
+                />   
+
+
           </Menu.Menu>
       
             

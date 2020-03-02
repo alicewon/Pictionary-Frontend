@@ -1,5 +1,8 @@
 import React from 'react';
 import Navbar from './Components/Navbar'
+import Login from './Components/Login'
+import Signup from './Components/Signup'
+import Logout from './Components/Logout'
 import Homepage from './Components/Homepage'
 import DrawingContainer from './Components/DrawingContainer'
 import ProfileContainer from './ContainerComponents/ProfileContainer'
@@ -7,6 +10,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import './index.css';
 import actioncable from 'actioncable'
+
+const playersURL = "http://localhost:3000/players"
 
 //import { BrowserRouter as Router } from 'react-router-dom'
 //import * as serviceWorker from './serviceWorker';
@@ -42,6 +47,8 @@ class App extends React.Component {
     super()
     this.state = {
       currentUser: null,
+      isLoggedIn: false,
+      newSignUp: false,
       drawData: {},
       username: 'alwaysNicole94'
     }
@@ -56,6 +63,22 @@ class App extends React.Component {
 
 // after parsing, if drawing data, updating drawing state. If chat data, update state of chat
   
+
+// Sign Up: POST user to database
+postPlayer = (player) => {
+  fetch(playersURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(player)
+
+  }).then(res => res.json())
+  .then(this.setState({ newSignUp: true }))
+  
+  
+}
 
   render() {
     return(
@@ -90,6 +113,35 @@ class App extends React.Component {
           render={ ()=> <ProfileContainer 
             username={this.state.username}
         
+          />}
+        />
+
+        <Route 
+          path="/login"
+          exact
+          render={ ()=> < Login
+            username={this.state.username}
+        
+          />}
+        />
+
+        <Route 
+          path="/signup"
+          exact
+          render={ ()=> < Signup
+            username={this.state.username}
+            postPlayer={this.postPlayer}
+            newSignUp={this.state.newSignUp}
+          />}
+        />
+
+        <Route 
+          path="/logout"
+          exact
+          render={ ()=> < Logout
+            username={this.state.username}
+            postPlayer={this.postPlayer}
+            newSignUp={this.state.newSignUp}
           />}
         />
         

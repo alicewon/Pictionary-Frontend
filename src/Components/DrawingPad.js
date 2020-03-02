@@ -114,7 +114,7 @@ class DrawingPad extends React.Component {
         // onChange={() => this.props.CableApp.drawingsChannel.send(this.saveableCanvas.getSaveData())}
         onChange={() => this.props.CableApp.drawingsChannel.send({"drawing_data": this.saveableCanvas.getSaveData()})}
       />
-
+<br></br>
        <Container maxWidth="sm">
          <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button

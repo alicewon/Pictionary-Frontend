@@ -58,8 +58,15 @@ body {
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.MuiButton-outlinedPrimary {
   /* background: linear-gradient(red, orange); */
-  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)
-  
+  /* background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%) */
+  background: #4992e0;
+  transition: background-color 0.5s ease;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlinedPrimary.MuiButton-outlinedPrimary:hover{
+  /* background: linear-gradient(red, orange); */
+  /* background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%) */
+  background: #255990;
 }
 
 .MuiButton-outlinedPrimary {
@@ -69,16 +76,16 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined.MuiButtonGroup-group
 
 
 h1 {
-  color: #a25b9e;
   margin-top:80px;
   margin-bottom: 65px!important;
-  color: #ec4c4c;
-  color: #f6f9ff;
+  /* color: #ec4c4c;
+  color: #f6f9ff; */
+  color: #673ab7;
 
 }
 
 h2 {
-  color: #a25b9e;
+  color: #673ab7;
   text-align: center;
 }
 
@@ -144,7 +151,8 @@ h5 {
 
 .ui.inverted.segment {
   /* background: #c1cbd4!important; */
-background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%)!important;
+  background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%)!important;
+/* background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%)!important; */
 
 }
 
@@ -171,7 +179,7 @@ background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49
 }
 
 .left.menu >a {
-  padding: 120px;
+  padding: 60px;
   text-transform: uppercase;
   color: #fff;
   
@@ -188,14 +196,14 @@ background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49
 /* GameStatusBar */
 .ui.raised.segment.game-status-bar {
   margin: 1rem 6rem;
-  background: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+  /* background: linear-gradient(60deg, #abecd6 0%, #fbed96 100%); */
+  background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   /* background: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%); */
   border: none;
 }
 
 h5 {
-  /* color: lightslategray; */
-  color: #2132ae;
+  color: #673ab7;
 }
 
 /* profile page */
@@ -207,6 +215,14 @@ h5 {
 
 .ui.header>.image:not(.icon), .ui.header>img {
   width: 7.5em!important;
+}
+
+.ui.centered.account-form {
+  margin-top: 60px;
+}
+
+.ui.very.padded.segment.profile-header-section {
+  margin-top: 60px;
 }
 
 /* media queries */
