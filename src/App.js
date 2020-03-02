@@ -142,6 +142,7 @@ postPlayer = (player) => {
             username={this.state.username}
             postPlayer={this.postPlayer}
             newSignUp={this.state.newSignUp}
+            isLoggedIn={this.state.isLoggedIn}
           />}
         />
         
