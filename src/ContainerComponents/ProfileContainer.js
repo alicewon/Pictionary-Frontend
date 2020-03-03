@@ -9,6 +9,7 @@ class ProfileContainer extends React.Component {
       <div>
         <ProfileHeader
           username={this.props.username}
+          user={this.props.user}
         />
         <ProfileDrawings/>
       </div>

@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import './index.css';
 import actioncable from 'actioncable'
+import { api } from "./services/api"
 
 const playersURL = "http://localhost:3000/players"
 
@@ -47,8 +48,10 @@ class App extends React.Component {
     super()
     this.state = {
       currentUser: null,
-      isLoggedIn: false,
       newSignUp: false,
+      auth: {
+        player: {}
+      },
       drawData: {},
       username: 'alwaysNicole94'
     }
@@ -62,7 +65,17 @@ class App extends React.Component {
 //receive this.setstate.canvas  - data goes in here, turn into object and then store in state?
 
 // after parsing, if drawing data, updating drawing state. If chat data, update state of chat
-  
+
+componentDidMount() {
+  const token = localStorage.getItem("token")
+  if (token) {
+    api.auth.getCurrentUser().then(player => {
+      const updatedState = {...this.state.auth, player: player }
+      console.log(player)
+      this.setState({auth: updatedState })
+    })
+  }
+}
 
 // Sign Up: POST user to database
 postPlayer = (player) => {
@@ -86,29 +99,46 @@ postPlayer = (player) => {
   })
 }
 
+login = data => {
+  const updatedState = {...this.state.auth, player: {id: data.id, username: data.username} }
+  localStorage.setItem("token", data.jwt)
+  this.setState({auth: updatedState})
+}
+
+logout = () => {
+  localStorage.removeItem("token")
+  this.setState( {auth: {user: {} } })
+}
+
   render() {
     return(
 
     <div>
       <Router>
-        <Navbar/>
+        <Navbar 
+          logout={this.logout}
+          user={this.state.auth.player}
+          />
 
         <Route
             path="/"
             exact
             render={() => <Homepage 
               username={this.state.username}
+              user={this.state.auth}
             />}
           />
 
         <Route 
           path="/game"
           exact
-          render={ ()=> <DrawingContainer 
+          render={ (props)=> <DrawingContainer 
             CableApp={CableApp}
             drawData={this.state.drawData}
             drawHandler={this.props.drawHandler}
             username={this.state.username}
+            {...props}
+
         
           />}
         />
@@ -118,6 +148,7 @@ postPlayer = (player) => {
           exact
           render={ ()=> <ProfileContainer 
             username={this.state.username}
+            user={this.state.auth.player}
         
           />}
         />
@@ -125,10 +156,7 @@ postPlayer = (player) => {
         <Route 
           path="/login"
           exact
-          render={ ()=> < Login
-            username={this.state.username}
-        
-          />}
+          render={props => < Login {...props} onLogin={this.login} />}
         />
 
         <Route 
@@ -140,7 +168,7 @@ postPlayer = (player) => {
             newSignUp={this.state.newSignUp}
           />}
         />
-
+        
         <Route 
           path="/logout"
           exact
@@ -149,8 +177,11 @@ postPlayer = (player) => {
             postPlayer={this.postPlayer}
             newSignUp={this.state.newSignUp}
             isLoggedIn={this.state.isLoggedIn}
+            logout={this.logout}
           />}
-        />
+        /> 
+        
+        
         
       </Router> 
     </div>

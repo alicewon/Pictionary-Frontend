@@ -14,7 +14,7 @@ class ProfileHeader extends React.Component {
                 <Grid.Column>
                   <Header as='h2'>
                     <Image circular src='https://react.semantic-ui.com/images/avatar/large/patrick.png' />
-                    <h2>{this.props.username}</h2>
+                    <h2>{this.props.user.username}</h2>
                   </Header>
                 </Grid.Column>
 

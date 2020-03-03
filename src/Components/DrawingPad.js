@@ -113,37 +113,37 @@ class DrawingPad extends React.Component {
         // // this will send the updated drawing save data, each time it is updated, to the web socket server.
         // onChange={() => this.props.CableApp.drawingsChannel.send(this.saveableCanvas.getSaveData())}
         onChange={() => this.props.CableApp.drawingsChannel.send({"drawing_data": this.saveableCanvas.getSaveData()})}
-      />
-<br></br>
-       <Container maxWidth="sm">
-         <ButtonGroup color="primary" aria-label="outlined primary button group">
-        <Button
-          onClick={() => {
-            //saved_drawing = this.saveableCanvas.getSaveData()
-            localStorage.setItem(
-              "savedDrawing",
-              this.saveableCanvas.getSaveData()
-            );
-          }}
-        >
-          Save
-        </Button>
-        <Button
-          onClick={() => {
-            this.saveableCanvas.clear();
-          }}
-        >
-          Clear
-        </Button>
-        <Button
-          onClick={() => {
-            this.saveableCanvas.undo();
-          }}
-        >
-          Undo
-        </Button>
-        </ButtonGroup>
-        </Container>
+        />
+        <br></br>
+        <Container maxWidth="sm">
+          <ButtonGroup color="primary" aria-label="outlined primary button group">
+          <Button
+            onClick={() => {
+              //saved_drawing = this.saveableCanvas.getSaveData()
+              localStorage.setItem(
+                "savedDrawing",
+                this.saveableCanvas.getSaveData()
+              );
+            }}
+          >
+            Save
+          </Button>
+          <Button
+            onClick={() => {
+              this.saveableCanvas.clear();
+            }}
+          >
+            Clear
+          </Button>
+          <Button
+            onClick={() => {
+              this.saveableCanvas.undo();
+            }}
+          >
+            Undo
+          </Button>
+          </ButtonGroup>
+          </Container>
       <h2>watch your drawing:</h2>
 
       

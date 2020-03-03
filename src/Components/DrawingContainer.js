@@ -5,6 +5,7 @@ import ChatWindow from './ChatWindow'
 //import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 // const actioncable = require("actioncable")
+import { api } from "../services/api";
 
 
 
@@ -26,6 +27,14 @@ class DrawingContainer extends React.Component {
  
   // })
   // }
+
+  componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login")
+    } else {
+      api.auth.getCurrentUser()
+    }
+  }
 
   render = () => {
     return(

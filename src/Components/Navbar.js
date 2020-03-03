@@ -11,13 +11,21 @@ import AppBar from '@material-ui/core/AppBar'
 import { Menu } from 'semantic-ui-react'
 import { NavLink} from 'react-router-dom'
 
-
+// const currentUser = props.currentUser
+// const loggedIn = !!this.props.currentUser.id
 class Navbar extends React.Component {
+
   
   state = { activeItem: '' }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
+  }
+
+  handleLogout = (name) => {
+    this.setState({ activeItem: name})
+    this.props.logout()
+    alert("You've been logged out!")
   }
   
   render() {
@@ -40,40 +48,49 @@ class Navbar extends React.Component {
                   onClick={this.handleItemClick}
                 />
                 
-                {/* <Menu.Item
-                as={NavLink} to="/game"
-                name='Draw'
-                active={activeItem === 'drawing'}
-                onClick={this.handleItemClick}
-                /> */}
-
                 <Menu.Item
                   as={NavLink} to="/profile"
                   name='my profile'
                   active={activeItem === 'profile'}
                   onClick={this.handleItemClick}
+                  user={this.state.auth}
                 />
-
+                  {!localStorage.token ? 
+                  <>
                 <Menu.Item
                   as={NavLink} to="/login"
                   name='Login'
                   active={activeItem === 'login'}
                   onClick={this.handleItemClick}
-                />  
+                /> 
 
                 <Menu.Item
                   as={NavLink} to="/signup"
                   name='Signup'
                   active={activeItem === 'signup'}
                   onClick={this.handleItemClick}
-                />   
+                /> 
+                </>
+                : null   
+                  }  
 
+                {localStorage.token ? 
                 <Menu.Item
-                  as={NavLink} to="/logout"
+                  as={NavLink} to="/"
                   name='Logout'
                   active={activeItem === 'signup'}
-                  onClick={this.handleItemClick}
-                />   
+                  onClick={this.handleLogout}
+                >Logout</Menu.Item>  : null
+                
+                }
+
+                {localStorage.token ?
+                
+                  <Menu.Item
+                  as={NavLink} to="/profile"
+                  >Hello {this.props.user.username}</Menu.Item>
+              :null
+                }
 
 
           </Menu.Menu>
