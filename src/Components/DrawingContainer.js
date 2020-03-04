@@ -1,6 +1,7 @@
 import React from 'react'
 import DrawingPad from './DrawingPad'
 import GameStatusBar from './GameStatusBar'
+
 import ChatWindow from './ChatWindow'
 //import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -41,8 +42,15 @@ class DrawingContainer extends React.Component {
 
       <React.Fragment>
         <GameStatusBar
-              username={this.props.username}
-            />
+          user={this.props.user}
+          getWord={this.props.getWord}
+          word={this.props.word}
+          // word={this.props.getWords()}
+        />
+
+        {/* <GameStarter>
+          user={this.props.user}
+        </GameStarter> */}
         {/* <CssBaseline /> */}
       
           <Container maxWidth="sm">

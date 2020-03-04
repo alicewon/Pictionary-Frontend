@@ -51,12 +51,23 @@ class Homepage extends React.Component {
             <Segment maxWidth="sm"> */}
               <Link to="/game"> 
                 <Button 
+                  className="homepage-button"
                   variant="contained" 
                   color="primary" 
                   disableElevation>
-                  New Game
+                  Start Game
                 </Button>
               </Link>
+              <Link to="/gameview"> 
+                <Button 
+                  className="homepage-button"
+                  variant="contained" 
+                  color="primary" 
+                  disableElevation>
+                  Join Game
+                </Button>
+              </Link>
+              
             </Segment.Inline>  
           </Segment>
 

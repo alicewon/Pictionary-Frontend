@@ -1,32 +1,28 @@
 import React from 'react'
 import { Segment } from 'semantic-ui-react'
-import { Grid} from 'semantic-ui-react'
+import { Grid, Button} from 'semantic-ui-react'
+import Timer from './Timer'
 
 class GameStatusBar extends React.Component {
-  render() {
+  render(props) {
     return(
       <React.Fragment>
         
         <Segment raised className="game-status-bar">
-          <Grid columns={4} divided>
+          <Grid columns={2} divided>
             <Grid.Row>
+             
               <Grid.Column>
-                <h5>{this.props.username}</h5>
-                <h3>274 Points</h3>
-              </Grid.Column>
-              <Grid.Column>
-                <h5>Your Word:</h5>
-                <h3>LLAMA</h3>
+              <h5>Your Word:</h5>
+                <h1 className="word">{this.props.word}</h1>
+                <Button onClick={this.props.getWord}>Change Word</Button>
               </Grid.Column>
               <Grid.Column>
                 
                 <h5>Time Remaining:</h5>
-                <h3>0:42</h3>
+                <Timer/>
               </Grid.Column>
-              <Grid.Column>
-              <h5>Opponent:</h5>
-                <h3>bananacat</h3>
-              </Grid.Column>
+              
             </Grid.Row>
           </Grid>
         </Segment>

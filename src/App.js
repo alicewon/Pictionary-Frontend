@@ -5,6 +5,7 @@ import Signup from './Components/Signup'
 import Logout from './Components/Logout'
 import Homepage from './Components/Homepage'
 import DrawingContainer from './Components/DrawingContainer'
+import DrawingWatch from './Components/DrawingWatch'
 import ProfileContainer from './ContainerComponents/ProfileContainer'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
@@ -13,6 +14,7 @@ import actioncable from 'actioncable'
 import { api } from "./services/api"
 
 const playersURL = "http://localhost:3000/players"
+const wordsURL = "http://localhost:3000/words"
 
 //import { BrowserRouter as Router } from 'react-router-dom'
 //import * as serviceWorker from './serviceWorker';
@@ -53,7 +55,8 @@ class App extends React.Component {
         player: {}
       },
       drawData: {},
-      username: 'alwaysNicole94'
+      username: 'alwaysNicole94',
+      word: ''
     }
   }
 //move index.js cable stuff to app.js, move to DrawingPad Component
@@ -75,6 +78,8 @@ componentDidMount() {
       this.setState({auth: updatedState })
     })
   }
+
+  this.getWord()
 }
 
 // Sign Up: POST user to database
@@ -110,6 +115,13 @@ logout = () => {
   this.setState( {auth: {user: {} } })
 }
 
+getWord = () =>{
+  fetch(wordsURL+'/random')
+  .then(res => res.json())
+  .then(data => this.setState({word: data.text}))
+  // .then(res => console.log(res))
+}
+
   render() {
     return(
 
@@ -136,12 +148,30 @@ logout = () => {
             CableApp={CableApp}
             drawData={this.state.drawData}
             drawHandler={this.props.drawHandler}
-            username={this.state.username}
+            // username={this.state.username}
+            user={this.state.auth.player}
+            getWord={this.getWord}
+            word={this.state.word}
             {...props}
 
         
           />}
         />
+
+        <Route 
+          path="/gameview"
+          exact
+          render={ (props)=> <DrawingWatch
+            CableApp={CableApp}
+            drawData={this.state.drawData}
+            drawHandler={this.props.drawHandler}
+            // username={this.state.username}
+            user={this.state.auth.player}
+            // getWord={this.getWord}
+            // word={this.state.word}
+            {...props}
+          />}
+        />  
 
         <Route 
           path="/profile"

@@ -242,3 +242,25 @@ h5 {
 .chat-window {
   height: 400px;
 }
+
+.timer, .word {
+  color: black;
+  margin-bottom: 10px!important;
+  margin-top: 0px;
+}
+
+.over {
+  text-transform: uppercase;
+  color: red;
+}
+
+.homepage-button {
+  display: inline!important;
+  margin-left: 5px!important;
+  margin-right: 5px!important;
+}
+
+
+  .canvasbox.secondcanvas {
+    position: fixed!important;
+}
