@@ -46,6 +46,7 @@ body {
   border: solid 3px #FE6B8A;
   border-radius: 8px;
   width: 666px!important;
+  margin: auto;
 }
 
 
@@ -261,6 +262,18 @@ h5 {
 }
 
 
-  .canvasbox.secondcanvas {
-    position: fixed!important;
+.canvasbox.secondcanvas {
+  position: fixed!important;
+}
+
+.chat-window-outer {
+  margin:auto;
+}
+
+.watch-outer-container {
+  margin-top:40px;
+}
+
+.drawing-outer {
+  margin: 1rem 6rem;
 }

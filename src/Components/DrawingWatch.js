@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from "react-dom"
 import CanvasDraw from "react-canvas-draw"
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Container from '@material-ui/core/Container';
 import ChatWindow from './ChatWindow'
+import {Grid } from 'semantic-ui-react'
+
 ReactDOM.render(<CanvasDraw />, document.getElementById("root"));
 
 
@@ -38,19 +37,35 @@ class DrawingWatch extends React.Component {
   })
 
     return(
-      <div>
-        <h2>Guess the Word:</h2>
-          <CanvasDraw
-            className="canvasbox"
-            disabled
-            hideGrid
-            ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
-            saveData={localStorage.getItem("savedDrawing")}
-            immediateLoading={this.state.immediateLoading}
-            loadTimeOffset={this.state.loadTimeOffset}
-          />
-          <ChatWindow />
-      </div>
+      <>
+        <div className="watch-outer-container">
+          <Grid columns={2}>
+
+            <Grid.Row>
+              <Grid.Column width={10}>
+                <h2>Guess the Word:</h2>
+                <CanvasDraw
+                  className="canvasbox"
+                  disabled
+                  hideGrid
+                  ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
+                  saveData={localStorage.getItem("savedDrawing")}
+                  immediateLoading={this.state.immediateLoading}
+                  loadTimeOffset={this.state.loadTimeOffset}
+                />
+
+              </Grid.Column>
+
+              <Grid.Column width={4}>
+                <ChatWindow 
+                CableApp={this.props.CableApp}
+                />
+              </Grid.Column>
+            </Grid.Row>
+        
+            </Grid>
+        </div>
+      </>
     )
   }
 }

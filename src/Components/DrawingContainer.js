@@ -1,10 +1,9 @@
 import React from 'react'
 import DrawingPad from './DrawingPad'
 import GameStatusBar from './GameStatusBar'
-
+import { Grid } from 'semantic-ui-react'
 import ChatWindow from './ChatWindow'
 //import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 // const actioncable = require("actioncable")
 import { api } from "../services/api";
 
@@ -53,14 +52,17 @@ class DrawingContainer extends React.Component {
         </GameStarter> */}
         {/* <CssBaseline /> */}
       
-          <Container maxWidth="sm">
-          
-            <DrawingPad 
-              CableApp={this.props.CableApp}
-              username={this.props.username}
+          {/* <Container maxWidth="sm"> */}
+          <Grid columns={2}>
+            <Grid.Row className="drawing-outer">
+              <Grid.Column width={10}>
+                <DrawingPad 
+                  CableApp={this.props.CableApp}
+                  username={this.props.username}
               // drawData={this.props.drawData}
               // drawHandler={this.props.drawHandler}
-            />
+                />
+                 </Grid.Column>
             {/* <div className="newDrawingForm">
               <form onSubmit={this.handleSubmit}>
                 <label>Type Something</label>
@@ -73,9 +75,15 @@ class DrawingContainer extends React.Component {
                 <input type="submit"/>
               </form>
             </div> */}
-
-            <ChatWindow />
-          </Container>
+                  <Grid.Column width={4}>
+                    <ChatWindow 
+                      CableApp={this.props.CableApp}
+                    />
+                  </Grid.Column>
+               
+              </Grid.Row>
+            </Grid>
+          {/* </Container> */}
       </React.Fragment>
     )
   }

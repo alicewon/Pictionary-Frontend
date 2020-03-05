@@ -1,6 +1,4 @@
 import React from 'react';
-//import Container from '@material-ui/core/Container';
-// import Button from '@material-ui/core/Button';
 import {Link} from  'react-router-dom';
 import { Grid, Image } from 'semantic-ui-react'
 import {
@@ -26,7 +24,7 @@ class Homepage extends React.Component {
   
   render() {
     const { children } = this.props
-    const { fixed } = this.state
+    // const { fixed } = this.state
 
   return(
 

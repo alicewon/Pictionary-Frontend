@@ -1,11 +1,6 @@
 import React from 'react'
-// import ReactDOM from "react-dom"
 import logo from '../images/logo.png'
 import AppBar from '@material-ui/core/AppBar'
-
-
-// Material-UI Imports:
-//import AppBar from '@material-ui/core/AppBar'
 
 // Semantic-UI Imports:
 import { Menu } from 'semantic-ui-react'

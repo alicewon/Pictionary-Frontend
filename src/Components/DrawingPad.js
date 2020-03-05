@@ -42,16 +42,6 @@ class DrawingPad extends React.Component {
         console.log(data.drawing_data)
 
 
-  // //json parse first and save as variable: 
-  //  let potato =JSON.parse(data.drawing_data)
-
-  // //get out "lines" from potato
-  // let points = potato.lines.slice(-1)
-
-  // //rebuild drawingdata
-  // let newPotato = {...potato, lines: points}
-
-
 
         //let brushstroke = JSON.parse(data.drawing_data).lines.slice(-1)
         //console.log(lines.slice(-1)[0])
@@ -71,7 +61,8 @@ class DrawingPad extends React.Component {
 
     return(
       <div>
-      <h2>DRAW SOMETHING:</h2>
+        
+      <h2>DRAW YOUR WORD:</h2>
      
       <CanvasDraw
         className="canvasbox"

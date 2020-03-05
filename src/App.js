@@ -56,7 +56,8 @@ class App extends React.Component {
       },
       drawData: {},
       username: 'alwaysNicole94',
-      word: ''
+      word: '',
+      messages:[]
     }
   }
 //move index.js cable stuff to app.js, move to DrawingPad Component
