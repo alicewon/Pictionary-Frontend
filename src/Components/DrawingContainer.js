@@ -55,7 +55,7 @@ class DrawingContainer extends React.Component {
           {/* <Container maxWidth="sm"> */}
           <Grid columns={2}>
             <Grid.Row className="drawing-outer">
-              <Grid.Column width={10}>
+              <Grid.Column width={12}>
                 <DrawingPad 
                   CableApp={this.props.CableApp}
                   username={this.props.username}

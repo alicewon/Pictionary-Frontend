@@ -15,15 +15,21 @@ import { api } from "./services/api"
 
 const playersURL = "http://localhost:3000/players"
 const wordsURL = "http://localhost:3000/words"
+const messagesURL = "http://localhost:3000/messages"
 
 //import { BrowserRouter as Router } from 'react-router-dom'
 //import * as serviceWorker from './serviceWorker';
 //import Homepage from './Components/Homepage';
 
 const CableApp = {}
-  CableApp.cable = actioncable.createConsumer('ws://localhost:3000/cable')
-//   CableApp.drawingsChannel = CableApp.cable.subscriptions.create({
-//     channel: `DrawingsChannel`
+CableApp.cable = actioncable.createConsumer('ws://localhost:3000/cable')
+
+
+
+
+
+  // constCableApp.drawingsChannel = CableApp.cable.subscriptions.create({
+  //   channel: `DrawingsChannel`
 // },{
 //     connected: () => {
 //         console.log("Index.js has connected!")
@@ -57,7 +63,7 @@ class App extends React.Component {
       drawData: {},
       username: 'alwaysNicole94',
       word: '',
-      messages:[]
+      currentMessage:''
     }
   }
 //move index.js cable stuff to app.js, move to DrawingPad Component
@@ -71,6 +77,9 @@ class App extends React.Component {
 // after parsing, if drawing data, updating drawing state. If chat data, update state of chat
 
 componentDidMount() {
+  // const CableApp = {}
+  // CableApp.cable = actioncable.createConsumer('ws://localhost:3000/cable')
+
   const token = localStorage.getItem("token")
   if (token) {
     api.auth.getCurrentUser().then(player => {
@@ -81,6 +90,7 @@ componentDidMount() {
   }
 
   this.getWord()
+  // this.createSocket()
 }
 
 // Sign Up: POST user to database
@@ -103,6 +113,55 @@ postPlayer = (player) => {
     this.setState({ newSignUp: true })
     }
   })
+}
+
+updateCurrentMessage = (event) =>{
+  this.setState({
+    currentMessage: event.target.value
+  })
+}
+
+sendChat = () => {
+  // this.CableApp.chatChannel.consumer.subscriptions.subscriptions[1] = this.state.currentMessage
+
+  this.chats.create(this.state.currentMessage)
+  this.setState({currentMessage: ''})
+
+}
+
+
+createSocket() {
+  this.chats = this.CableApp.cable.subscriptions.create({
+    channel: `ChatChannel`
+},
+{
+  connected: () => {
+      console.log("CHATWINDOW has connected!")
+  },
+
+  received: (data) => { 
+    console.log(data) },
+  
+
+  create: function(chatContent) {
+    this.perform('create', {
+      text: chatContent
+    })
+  }
+
+})
+}
+
+postMessages = (message) => {
+  fetch(messagesURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }, 
+    body: JSON.stringify(message)
+  }).then(res => res.json())
+  .then(res => console.log(res))
 }
 
 login = data => {
@@ -153,6 +212,8 @@ getWord = () =>{
             user={this.state.auth.player}
             getWord={this.getWord}
             word={this.state.word}
+            postMessages={this.postMessages}
+            
             {...props}
 
         
@@ -168,6 +229,13 @@ getWord = () =>{
             drawHandler={this.props.drawHandler}
             // username={this.state.username}
             user={this.state.auth.player}
+            postMessages={this.postMessages}
+
+
+            currentMessage={this.state.currentMessage}
+            updateCurrentMessage={this.updateCurrentMessage}
+            sendChat={this.sendChat}
+            createSocket={this.createSocket}
             // getWord={this.getWord}
             // word={this.state.word}
             {...props}

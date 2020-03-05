@@ -58,7 +58,13 @@ class DrawingWatch extends React.Component {
 
               <Grid.Column width={4}>
                 <ChatWindow 
-                CableApp={this.props.CableApp}
+                  CableApp={this.props.CableApp}
+                  postMessages={this.props.postMessages}
+                  messages={this.props.messages}
+                  currentMessage={this.props.currentMessage}
+                  updateCurrentMessage={this.props.updateCurrentMessage}
+                  sendChat={this.props.sendChat}
+                  createSocket={this.props.createSocket}
                 />
               </Grid.Column>
             </Grid.Row>

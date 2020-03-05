@@ -277,3 +277,8 @@ h5 {
 .drawing-outer {
   margin: 1rem 6rem;
 }
+
+
+.ui.form input[type=text] {
+  width: 70%!important;
+}
